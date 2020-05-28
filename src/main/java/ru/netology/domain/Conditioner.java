@@ -46,20 +46,34 @@ public class Conditioner {
         this.currentTemperature = currentTemperature;
     }
 
-//    public void setCurrentTemperature(int currentTemperature) {
-//        if (currentTemperature <= maxTemperature) {
-//            if (currentTemperature >= minTemperature) {
-//                this.currentTemperature = currentTemperature;
-//            }
-//        }
-//    }
-
     public boolean isOn() {
         return on;
     }
 
     public void setOn(boolean on) {
         this.on = on;
+    }
+
+    public void increaseCurrentTemperature() {
+
+        int changedTemperature = currentTemperature + 1;
+        System.out.println(changedTemperature);
+        if (changedTemperature > maxTemperature) {
+            return;
+        }
+
+        currentTemperature = changedTemperature;
+
+    }
+
+    public void decreaseCurrentTemperature() {
+        int changedTemperature = currentTemperature - 1;
+
+        if (changedTemperature < minTemperature) {
+            return;
+        }
+
+        currentTemperature = changedTemperature;
     }
 }
 
