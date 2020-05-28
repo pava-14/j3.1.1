@@ -57,7 +57,7 @@ public class Conditioner {
     public void increaseCurrentTemperature() {
 
         int changedTemperature = currentTemperature + 1;
-        System.out.println(changedTemperature);
+
         if (changedTemperature > maxTemperature) {
             return;
         }
