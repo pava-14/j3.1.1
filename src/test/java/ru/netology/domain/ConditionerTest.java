@@ -6,6 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ConditionerTest {
 
+    int calculateClickCount(Conditioner conditioner, int overCount) {
+        // Количество нажатий кнопки "Увеличить температуру":
+        // т.к. каждое нажатие увеличивает температуру на 1 градуc,
+        // считаем количество кликов от минимальной температуры до максимальной и
+        // уыеличиваем его на overCount? для гарантированного выхода за границы
+        // допустимых значений
+        return conditioner.getMaxTemperature() - conditioner.getMinTemperature() + overCount;
+    }
+
     @Test
     void shouldIncreaseCurrentTemperature() {
 
@@ -15,11 +24,8 @@ class ConditionerTest {
         conditioner.setMinTemperature(0);
         conditioner.setCurrentTemperature(22);
 
-        // Количество нажатий кнопки "Увеличить температуру":
-        // т.к. каждое нажатие увеличивает температуру на 1 градуc,
-        // считаем количество кликов от минимальной температуры до максимальной и
-        // уыеличиваем его для гарантированного выхода за границы допустимых значений
-        int countButtonClick = conditioner.getMaxTemperature() - conditioner.getMinTemperature() + 10;
+        // Количество нажатий кнопки "Увеличить температуру"
+        int countButtonClick = calculateClickCount(conditioner, 10);
 
         for (int i = 0; i < countButtonClick; i++) {
 
@@ -39,13 +45,9 @@ class ConditionerTest {
         conditioner.setMinTemperature(0);
         conditioner.setCurrentTemperature(22);
 
-        // Количество нажатий кнопки "Увеличить температуру
-        // т.к. каждое нажатие увеличивает температуру на 1 градуc,
-        // считаем количество кликов от минимальной температуры до максимальной и
-        // уыеличиваем его для гарантированного выхода за границы допустимых значений
-        int countButtonClick = conditioner.getMaxTemperature() - conditioner.getMinTemperature() + 10;
+        // Количество нажатий кнопки "Уменьшить температуру
+        int countButtonClick = calculateClickCount(conditioner, 10);
 
-        System.out.println(conditioner.getCurrentTemperature());
         for (int i = 0; i < countButtonClick; i++) {
 
             conditioner.decreaseCurrentTemperature();
