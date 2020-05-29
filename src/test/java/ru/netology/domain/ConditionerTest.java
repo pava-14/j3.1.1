@@ -16,6 +16,58 @@ class ConditionerTest {
     }
 
     @Test
+    void shouldSetOverloadMaxTemperature() {
+
+        Conditioner conditioner = new Conditioner();
+
+        int overload = 50;
+
+        // Включаем, если выключен
+        if (!conditioner.isOn()) {
+            conditioner.setOn(true);
+        }
+
+        // Устанавливаем текущую температуру
+        conditioner.setCurrentTemperature(22);
+
+        // Запоминаем текущую температуру
+        int expected = conditioner.getCurrentTemperature();
+
+        // Устанавливаем температуру, выше максимальной
+        conditioner.setCurrentTemperature(conditioner.getMaxTemperature() + overload);
+
+        // Проверим, что текущая температура не изменилась
+        assertEquals(expected, conditioner.getCurrentTemperature());
+
+    }
+
+    @Test
+    void shouldSetOverloadMinTemperature() {
+
+        Conditioner conditioner = new Conditioner();
+
+        int overload = 50;
+
+        // Включаем, если выключен
+        if (!conditioner.isOn()) {
+            conditioner.setOn(true);
+        }
+
+        // Устанавливаем текущую температуру
+        conditioner.setCurrentTemperature(22);
+
+        // Запоминаем текущую температуру
+        int expected = conditioner.getCurrentTemperature();
+
+        // Устанавливаем температуру, ниже минимальной
+        conditioner.setCurrentTemperature(conditioner.getMinTemperature() - overload);
+
+        // Проверим, что текущая температура равна минимально возможной
+        assertEquals(expected, conditioner.getCurrentTemperature());
+
+    }
+
+    @Test
     void shouldIncreaseCurrentTemperature() {
 
         Conditioner conditioner = new Conditioner();
@@ -67,4 +119,5 @@ class ConditionerTest {
         assertEquals(conditioner.getCurrentTemperature(), conditioner.getMinTemperature());
 
     }
+
 }
