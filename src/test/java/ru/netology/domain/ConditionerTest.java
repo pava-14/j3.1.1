@@ -10,7 +10,7 @@ class ConditionerTest {
         // Количество нажатий кнопки "Увеличить температуру":
         // т.к. каждое нажатие увеличивает температуру на 1 градуc,
         // считаем количество кликов от минимальной температуры до максимальной и
-        // уыеличиваем его на overCount? для гарантированного выхода за границы
+        // увеличиваем его на overCount? для гарантированного выхода за границы
         // допустимых значений
         return conditioner.getMaxTemperature() - conditioner.getMinTemperature() + overCount;
     }
@@ -18,10 +18,14 @@ class ConditionerTest {
     @Test
     void shouldIncreaseCurrentTemperature() {
 
-        // Начальные параметры
         Conditioner conditioner = new Conditioner();
-        conditioner.setMaxTemperature(40);
-        conditioner.setMinTemperature(0);
+
+        // Включаем, если выключен
+        if (!conditioner.isOn()) {
+            conditioner.setOn(true);
+        }
+
+        // Устанавливаем текущую температуру
         conditioner.setCurrentTemperature(22);
 
         // Количество нажатий кнопки "Увеличить температуру"
@@ -39,10 +43,15 @@ class ConditionerTest {
 
     @Test
     void shouldDecreaseCurrentTemperature() {
-        // Начальные параметры
+
         Conditioner conditioner = new Conditioner();
-        conditioner.setMaxTemperature(40);
-        conditioner.setMinTemperature(0);
+
+        // Включаем, если выключен
+        if (!conditioner.isOn()) {
+            conditioner.setOn(true);
+        }
+
+        // Устанавливаем текущую температуру
         conditioner.setCurrentTemperature(22);
 
         // Количество нажатий кнопки "Уменьшить температуру
