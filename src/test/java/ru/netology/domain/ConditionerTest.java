@@ -27,7 +27,7 @@ class ConditionerTest {
         int expected = conditioner.getCurrentTemperature();
         // Устанавливаем температуру, ниже минимальной
         conditioner.setCurrentTemperature(conditioner.getMinTemperature() - 1);
-        // Проверим, что текущая температура равна минимально возможной
+        // Проверим, что текущая температура не изменилась
         assertEquals(expected, conditioner.getCurrentTemperature());
     }
 
