@@ -9,10 +9,4 @@
     * ```public void increaseCurrentTemperature()``` 
     * ```public void decreaseCurrentTemperature()```  
 5. Написаны автотесты на созданные методы, со 100% покрытием по бранчам.
-
-## Примечание
-
- При реализации методов ```increaseCurrentTemperature()``` и ```decreaseCurrentTemperature()``` 
- не использовался существующий сеттер ````setCurrentTemperature(int currentTemperature)````, 
- т.к., по условиям задачи, необходимо было продемонстрировать использование Early Exit.
  
